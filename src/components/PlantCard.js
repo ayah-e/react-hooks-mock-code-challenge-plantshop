@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function PlantCard({key, name, image, price}) {
+function PlantCard({name, image, price}) {
   const [soldOut, setSoldOut] = useState(true);
   function handleSoldOut() {
     setSoldOut(soldOut =>!soldOut);
