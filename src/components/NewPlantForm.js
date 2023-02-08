@@ -7,7 +7,7 @@ function NewPlantForm({renderPlant}) {
     //this is setting the newPlant obj to adding the key name: value//
     setNewPlant({...newPlant, [e.target.name]: [e.target.value]});
   }
-  console.log(newPlant);
+  // console.log(newPlant);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -18,6 +18,14 @@ function NewPlantForm({renderPlant}) {
   }
   e.target.reset();
   renderPlant(newPlantObject);
+
+fetch("http://localhost:6001/plants", {
+  method: "POST",
+  headers: {'Content-Type': 'application/json'}, 
+  body: JSON.stringify(newPlantObject)
+})
+.then(res => res.json())
+.then(data => console.log(data)) 
 }
 
   return (
